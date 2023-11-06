@@ -43,6 +43,9 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       maximum-pool-size: 40
+  data.rest:
+    base-path: /api
+    detection-strategy: annotated
 logging:
   level:
     org:
