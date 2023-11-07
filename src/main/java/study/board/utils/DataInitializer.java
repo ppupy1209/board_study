@@ -23,8 +23,9 @@ public class DataInitializer {
         Article article3 = Article.of("3번","내용 3","#python");
         Article article4 = Article.of("4번","내용 4","#c++");
         Article article5 = Article.of("5번","내용 5","#kotlin");
+        Article article6 = Article.of("5번","내용 5","#kotlin");
 
-        articleRepository.saveAll(List.of(article1,article2,article3,article4,article5));
+        articleRepository.saveAll(List.of(article1,article2,article3,article4,article5,article6));
 
         ArticleComment articleComment1 = ArticleComment.of(article1,"Answer 1");
         ArticleComment articleComment2 = ArticleComment.of(article2,"Answer 2");
