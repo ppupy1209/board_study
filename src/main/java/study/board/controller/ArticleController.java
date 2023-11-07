@@ -14,6 +14,8 @@ import study.board.dto.ArticlePostDto;
 import study.board.dto.ArticleWithCommentsDto;
 import study.board.service.ArticleService;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RequestMapping("/articles")
 @RestController
@@ -44,6 +46,19 @@ public class ArticleController {
     public void patchArticle(@PathVariable("article-id") Long articleId,
                              @RequestBody ArticlePatchDto articlePatchDto) {
         articleService.updateArticle(articlePatchDto,articleId);
+    }
+
+    @GetMapping("/search-hashtag")
+    public List<String> getHashtags() {
+        return articleService.getHashtags();
+    }
+
+    @GetMapping("/via-hashtag")
+    public Page<ArticleDto> searchArticlesViaHashtag(
+            @RequestParam(required = false) String hashtag,
+            @PageableDefault(size = 10, sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable
+    ) {
+        return articleService.searchArticlesViaHashtag(hashtag,pageable);
     }
 
 }
